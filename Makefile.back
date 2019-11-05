@@ -1,0 +1,16 @@
+CC=g++
+SRC = \
+	calculator.cpp \
+	main.cpp
+TARGET=calc
+
+all: $(TARGET)
+
+%.o: %.cpp
+	$(CC) -c -o $@ $<
+
+$(TARGET): $(SRC:.cpp=.o)
+	$(CC) $(SRC:.cpp=.o) -o $(TARGET)
+
+clean:
+	rm -f $(SRC:.cpp=.o) $(TARGET)
